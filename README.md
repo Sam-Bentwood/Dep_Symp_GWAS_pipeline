@@ -27,52 +27,57 @@ These are also included in the shell scripts provided
 
 ### Step 1
 
-`--bed`: **PLINK** binary files prefix for .bed/.bim/.fam files
+`--qt` = setting to quantitative trait
 
-`--extract`: = List of SNPs that pass QC filter (We generate this list in **PLINK**, however if you have already performed sufficient QC on your genotyped data file, you can omit this flag)
+`--bed` = PLINK binary files prefix for .bed/.bim/.fam files which contain the (directly) genotyped data
 
-`--phenoFile`: Path to your phenotype file with the header `FID IID pheno_col`
+`--extract` = List of SNPs that pass genotyping QC filters for this ancestry cluster (We generate this list prior to this step in PLINK, however if you have already performed sufficient QC on your genotype data file, you can omit this flag)
 
-`--phenoCol`: Phenotype column name
+`--keep` = List of participants that pass genotyping QC filters for this ancestry cluster (We generate this list prior to this step in PLINK, however if you have already performed sufficient QC on your genotype data file, you can omit this flag)
 
-`--covarFile`: Covariate file path with the header `FID IID C1 C2 C3`
+`--phenoFile` = phenotype file path with the header FID IID pheno_col (Because we supply a list of QC'd participants for this ancestry using --keep, the phenotype file can contain the whole cohort and --keep flag will filter for this ancestry)
 
-`--covarCol`: Covariate column names
+`--phenoCol` = phenotype column name - not needed if only analysing one phenotype and phenoFile only contains three columns as above
 
-`--bsize`: Chunk size for analysis
+`--covarFile` = covariate file path with the header FiD IID C1 C2 C3 etc. (Again, can contain the whole cohort if filtering using either --keep or --remove flags)
 
-`--bt`: Option for binary trait
+`--catCovarList` = list of categorical covariates in the covarFile
 
-`--out`: Path to output file
+`--covarCol` = numeric covariate column names - only needed if you have columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
+
+`--bsize` = chunk size (base-pairs) for analysis
+
+`--threads` = for parallel processing with multiple cores - here we've set threads equal to number of cores requested for job
+
+`--out` = path to output file
 
 
 ### Step 2 
-`--bgen`: Path to imputed data. Here we use the .bgen format split by chromosome. See REGENIE documentation for more info on file input
 
-`--phenoFile`: Path to your phenotype file with the header `FID IID pheno_col`
+`--pgen` = path to imputed data. Here we use the .pgen format, so use the pgen flag and point to file prefix for .pgen/.psam/.pvar files. See REGENIE documention for more info on file input
 
-`--phenoCol`: Phenotype column name
+`--chr` = chromosome number - if you have bgen files split by chromosome then you will omit this flag and chromosome number will be specified in the path in --bgen flag
 
-`--sample`: Sample file corresponding to input bgen (can also use `--keep` / `--remove` flags to only include individuals that pass QC filtering, see REGENIE documentation)
+`--phenoFile` = path to your phenotype file with the header FID IID pheno_col 
 
-`--covarFile`: Covariate file path with the header `FID IID C1 C2 C3`
+`--phenoCol` = phenotype column name - not needed if only analysing one phenotype and phenoFile only contains three columns as above
 
-`--covarCol`: Covariate column names
+`--covarFile` = covariate file path with the header FiD IID C1 C2 C3 etc
 
-`--bsize`: Chunk size for analysis
+`--catCovarList` = list of categorical covariates in the covarFile
 
-`--minMAC`: Minimum minor allele count
+`--covarCol` = numeric covariate column names - only needed if you have columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
 
-`--minINFO`: Minimum imputation info score
+`--bsize` = chunk size for analysis
 
-`--bt`: Option for binary trait
+`--minMAC` = minimum minor allele count
 
-`--af-cc` : To output A1FREQ in case/controls separately in the step 2 result file and N_CASES N_CONTROLS
+`--minINFO` = minimum imputation info score
 
-`--firth` `--approx`: Firth LRT, computational speed up
+`--qt` = specifies quantitative trait
 
-`--pThresh`: P-value threshold to apply firth correction
+`--pred` = path to file containing predictions from STEP 1
 
-`--pred`: Path to file containing predictions from **STEP 1**
+`--out` = path to output file(s)
 
-`--out`: Path to output file(s)
+`--threads` = for parallel processing with multiple cores - here we've set threads equal to number of cores requested for job
