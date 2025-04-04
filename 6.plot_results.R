@@ -2,8 +2,10 @@
 
 # NOTE: Cols and sumstats file names may need renaming in the code, depending how sumstats were generated (required columns: CHROM, POS, P)
 
-
+# load packages
+require(data.table)
 library(topr)
+library(ggrepel)
 library(dplyr)
 
 ## Requirements
@@ -36,7 +38,7 @@ for (i in 1:length(ancs)) {
   setwd(sumstats_loc)
 
 
-  sumstats <- read.table(paste0(cohort, "_", scale, "_", ancs[i], "_v", vers, ".regenie"), header = TRUE)
+  sumstats <- fread(paste0(cohort, "_", scale, "_", ancs[i], "_v", vers, ".txt.gz"), header = TRUE)
  
 
  
@@ -51,7 +53,7 @@ for (i in 1:length(ancs)) {
             sign_thresh_color = "black",
             sign_thresh_label_size = 0,
 	    ymax = 20, ymin = 3, scale = 0.8,
-            title = paste0(cohort, " (", ancestry, ")"))
+            title = paste0(cohort, " (", ancs[i], ")"))
 
   dev.off()
 }
@@ -64,7 +66,7 @@ for (i in 1:length(ancs)) {
   # Set working directory to sumstats location
   setwd(sumstats_loc)
 
-  sumstats <- read.table(paste0(cohort, "_", scale, "_", ancs[i], "_v", vers, ".regenie"), header = TRUE)
+  sumstats <- fread(paste0(cohort, "_", scale, "_", ancs[i], "_v", vers, ".txt.gz"), header = TRUE)
 
   # Set working directory to plots location
   setwd(plots_loc)

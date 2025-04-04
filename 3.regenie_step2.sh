@@ -34,8 +34,9 @@ for CHR in {1..22}; do
         --pgen $IMPUTED/ukb_imp_v3.qc \
         --chr $CHR \
         --phenoFile $PHENO/dep_score_stand_mean.txt \
-        --covarFile /exports/igmm/eddie/GenScotDepression/data/ukb/genetics/input_filters/similarity_clusters/sg_pcs6.covar \
-        --catCovarList sex,genotyping \
+        --covarFile $PHENO/covariates.txt \
+        --covarCol PC{1:6},yob \
+        --catCovarList sex,genotyping,batch,center \
         --bsize 400 \
         --minMAC 20 \
         --minINFO 0.1 \
@@ -43,9 +44,6 @@ for CHR in {1..22}; do
         --pred $STAGING/stage1_${ANS}_pred.list \
         --out $STAGING/stage2_${ANS}_chr${CHR} \
         --threads 16
-#       --covarFile $PHENO/covariates.txt \
-#       --catCovarList sex,genotyping,batch,center YOB IS PROBABLY A NUMERIC COLUMN SO TAKE OUT OF HERE? \
-        
 
 done
 
@@ -64,3 +62,4 @@ done
 # --qt = specifies quantitative trait
 # --pred = path to file containing predictions from STEP 1
 # --out = path to output file(s)
+# --threads = for parallel processing with multiple cores - here we've set threads equal to number of cores requested for job

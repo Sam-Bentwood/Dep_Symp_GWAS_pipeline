@@ -35,15 +35,15 @@ regenie \
   --extract $GENO_QC/QC_pass_$ANS.snplist \
   --keep $GENO_QC/QC_pass_$ANS.id \
   --phenoFile $PHENO/dep_score_stand_mean.txt \
-  --covarFile /exports/igmm/eddie/GenScotDepression/data/ukb/genetics/input_filters/similarity_clusters/sg_pcs6.covar \
-  --catCovarList sex,genotyping \
+  --covarFile $PHENO/covariates.txt \
+  --covarCol PC{1:6},yob \
+  --catCovarList sex,genotyping,batch,center \
   --bsize 1000 \
   --threads 16 \
   --out $STAGING/stage1_$ANS
-# --covarFile $PHENO/covariates.txt \
-# --catCovarList sex,genotyping,batch,center YOB IS PROBABLY A NUMERIC COLUMN SO TAKE OUT OF HERE? \
 
 
+# --qt = specifies quantitative trait
 # --bed = PLINK binary files prefix for .bed/.bim/.fam files which contain the (directly) genotyped data
 # --extract = List of SNPs that pass genotyping QC filters for this ancestry cluster (We generate this list prior to this step in PLINK, however if you have already performed sufficient QC on your genotype data file, you can omit this flag)
 # --keep = List of participants that pass genotyping QC filters for this ancestry cluster (We generate this list prior to this step in PLINK, however if you have already performed sufficient QC on your genotype data file, you can omit this flag)
@@ -52,6 +52,6 @@ regenie \
 # --covarFile = covariate file path with the header FiD IID C1 C2 C3 etc. (Again, can contain the whole cohort if filtering using either --keep or --remove flags)
 # --catCovarList = list of categorical covariates in the covarFile
 # --covarCol = numeric covariate column names - only needed if you have columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
-# --bsize = chunk size for analysis
-# --bt = binary trait
+# --bsize = chunk size (base-pairs) for analysis
+# --threads = for parallel processing with multiple cores - here we've set threads equal to number of cores requested for job
 # --out = path to output file

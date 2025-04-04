@@ -13,7 +13,7 @@ vers <- "1"
 
 # ancestry splits to use in loop - check these are correct
 ancs <- c("EAS","AMR","SAS","MID","EUR","AFR")
-i <- 3
+
 
 # load packages
 require(data.table)
