@@ -8,9 +8,6 @@ library(topr)
 library(ggrepel)
 library(dplyr)
 
-## Requirements
-# Please make sure -log10P values have been converted to raw P values before running this script
-# See shell script `5.convert_-log10P.sh`
 
 # Set cohort name, scale, version
 cohort <- "UKB"
