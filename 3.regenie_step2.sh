@@ -36,7 +36,7 @@ for CHR in {1..22}; do
         --phenoFile $PHENO/dep_score_stand_mean.txt \
         --covarFile $PHENO/covariates.txt \
         --covarCol PC{1:6},yob \
-        --catCovarList sex,genotyping,batch,center \
+        --catCovarList sex,genotyping \
         --bsize 400 \
         --minMAC 20 \
         --minINFO 0.1 \
@@ -55,7 +55,7 @@ done
 # --phenoCol = phenotype column name - not needed if only analysing one phenotype and phenoFile only contains three columns as above
 # --covarFile = covariate file path with the header FiD IID C1 C2 C3 etc.
 # --catCovarList = list of categorical covariates in the covarFile
-# --covarCol = numeric covariate column names - only needed if you have columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
+# --covarCol = numeric covariate column names - only needed if you have numeric columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
 # --bsize = chunk size for analysis
 # --minMAC = minimum minor allele count
 # --minINFO = minimum imputation info score

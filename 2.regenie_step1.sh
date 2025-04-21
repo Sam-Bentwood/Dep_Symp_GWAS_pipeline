@@ -37,7 +37,7 @@ regenie \
   --phenoFile $PHENO/dep_score_stand_mean.txt \
   --covarFile $PHENO/covariates.txt \
   --covarCol PC{1:6},yob \
-  --catCovarList sex,genotyping,batch,center \
+  --catCovarList sex,genotyping \
   --bsize 1000 \
   --threads 16 \
   --out $STAGING/stage1_$ANS
@@ -51,7 +51,7 @@ regenie \
 # --phenoCol = phenotype column name - not needed if only analysing one phenotype and phenoFile only contains three columns as above
 # --covarFile = covariate file path with the header FiD IID C1 C2 C3 etc. (Again, can contain the whole cohort if filtering using either --keep or --remove flags)
 # --catCovarList = list of categorical covariates in the covarFile
-# --covarCol = numeric covariate column names - only needed if you have columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
+# --covarCol = numeric covariate column names - only needed if you have numeric columns in covarFile you want to be ignored. Otherwise regenie uses all columns except the ones listed as categorical 
 # --bsize = chunk size (base-pairs) for analysis
 # --threads = for parallel processing with multiple cores - here we've set threads equal to number of cores requested for job
 # --out = path to output file
