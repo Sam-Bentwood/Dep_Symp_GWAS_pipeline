@@ -10,7 +10,14 @@
 
 ## REGENIE STEP 1 - whole genome regression model is fit to the traits, and a set of genomic predictions are produced as output. 
 # Regenie handles relatedness so please retain related individuals in your data
-# This is an example script in the UKB cohort, and assumes regenie installation using Conda. Please edit for your data and computing set-up
+
+# This is an example script in the UKB cohort, and assumes regenie was installed previously via Conda/Anaconda (Please edit for your data and computing set-up).
+# To install regenie via conda, start conda/anaconda however you normally load programmes (e.g., module load anaconda) and then submit the following command:
+# conda create -n regenie_env -c conda-forge -c bioconda regenie
+
+# For troubleshooting see the REGENIE documentation: https://rgcgithub.github.io/regenie/options/
+
+# Load environment modules - this line allows the anaconda module to be loaded after
 
 # Load environment modules
 . /etc/profile.d/modules.sh
